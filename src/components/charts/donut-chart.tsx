@@ -25,6 +25,7 @@ interface TooltipProps {
     payload: {
       name: string
       value: number
+      color: string
     }
   }>
 }

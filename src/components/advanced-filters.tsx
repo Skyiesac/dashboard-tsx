@@ -16,7 +16,8 @@ export function AdvancedFilters() {
   const [isExpanded, setIsExpanded] = useState(false)
   const { filters, updateFilter, activeFilters, setActiveFilters, clearFilters } = useFilters()
 
-  const handleFilterChange = (key: string, value: string | number | boolean) => {
+  const handleFilterChange = (key: string, value: string | number | boolean | { start: string; end: string }) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     updateFilter(key as any, value)
   }
 
@@ -49,7 +50,7 @@ export function AdvancedFilters() {
   }
 
   const removeFilter = (filterName: string) => {
-    setActiveFilters(prev => prev.filter(f => f !== filterName))
+    setActiveFilters(activeFilters.filter((f: string) => f !== filterName))
   }
 
   return (
